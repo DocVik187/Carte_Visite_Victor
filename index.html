@@ -84,4 +84,48 @@
 
             <!-- Réseaux Sociaux -->
             <div class="flex justify-center">
-                <a href="
+                <a href="https://www.linkedin.com/in/victor-carvalho-76140874/" target="_blank" class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:text-[#0077b5] hover:border-[#0077b5] hover:bg-blue-50 transition">
+                    <i class="fa-brands fa-linkedin-in text-lg"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script vCard -->
+    <script>
+        function downloadVCard() {
+            const contact = {
+                firstName: "Victor",
+                lastName: "CARVALHO",
+                title: "Expert Système Thermodynamique",
+                phone: "+33760802356",
+                email: "victor.carvalho@dalkia.fr",
+                website: "https://www.linkedin.com/in/victor-carvalho-76140874/",
+                company: "Dalkia Corporate"
+            };
+
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+N:${contact.lastName};${contact.firstName};;;
+FN:${contact.firstName} ${contact.lastName}
+ORG:${contact.company}
+TITLE:${contact.title}
+TEL;TYPE=WORK,VOICE:${contact.phone}
+EMAIL;TYPE=PREF,INTERNET:${contact.email}
+URL:${contact.website}
+END:VCARD`;
+
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${contact.firstName}_${contact.lastName}.vcf`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
